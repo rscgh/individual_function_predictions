@@ -2,8 +2,8 @@
 
 ### Task analysis scripts & notebooks
 
-| File                                               | Description                                                                                                                                  | Figures |
-| -------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| File            | Description                                                                                                                                  | Figures |
+| ------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
 | `download_hcp_data.ipynb`                          | download resting brain surfaces, state runs, task maps and (freesurfer-derived) structural maps                                              |         |
 | `hcp_task_retest_baseline.ipynb`                   | Notebook to compute the test-retest baselines (accuracy, discriminability, vertex-wise-scores ...)                                           |         |
 | **Common functionality**                           | The scripts located in the `lib/` folder                                                                                                     |         |
