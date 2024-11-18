@@ -3,9 +3,9 @@
 [<img src="https://img.shields.io/badge/biorxiv-preprint-blue.svg?logo=LOGO">](https://www.biorxiv.org/content/10.1101/2024.11.13.621472v1.abstract)
 [<img src="https://img.shields.io/badge/twitter-thread-lightblue.svg?logo=LOGO">](https://www.biorxiv.org/content/10.1101/2024.11.13.621472v1.abstract)
 
-This repository contains the code for the study "Individual brain activity patterns during task are predicted by distinct resting-state networks that may reflect local neurobiological features" \[[biorxiv](https://www.biorxiv.org/content/10.1101/2024.11.13.621472v1.abstract)\]
+This repository contains the code for the study **"Individual brain activity patterns during task are predicted by distinct resting-state networks that may reflect local neurobiological features"** \[[biorxiv](https://www.biorxiv.org/content/10.1101/2024.11.13.621472v1.abstract)\]
 
-
+<img src="data/F3.large1.jpg" width="800">
 
 The code is structured into notebooks that span the different analysis stages:
 
