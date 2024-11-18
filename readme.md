@@ -1,36 +1,53 @@
 # Contents
 
-### Task analysis scripts & notebooks
+This repository contains the code for the study "Individual brain activity patterns during task are predicted by distinct resting-state networks that may reflect local neurobiological features" \[[biorxiv](https://www.biorxiv.org/content/10.1101/2024.11.13.621472v1.abstract)\]
 
-| File            | Description                                                                                                                                  | Figures |
-| ------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
-| `download_hcp_data.ipynb`                          | download resting brain surfaces, state runs, task maps and (freesurfer-derived) structural maps                                              |         |
-| `hcp_task_retest_baseline.ipynb`                   | Notebook to compute the test-retest baselines (accuracy, discriminability, vertex-wise-scores ...)                                           |         |
-| **Common functionality**                           | The scripts located in the `lib/` folder                                                                                                     |         |
-| `lib/data_loading.py`                              | Some helper functions to load data, e.g. `load_xy_data`, `gather_modalities`                                                                                                   |         |
-| `lib/linear_models.py`                             | Helper functions for model fitting and prediction, e.g. `predict_y_from_x, score`                                                            |         |
-| `lib/plotting.py`                                  | Some custom plotting functions (as surfplot cannot be used on our current cluster as no x-server is available), e.g. `plot_bars`, `plot_29k` |         |
-| `lib/stats.py`                                     | Functions to compute some statstics & scores, e.g. `compute_all_scores`, `comp_dice`, or `comp_corr`                                         |         |
-| **Preparation**                                    | i.e. preprocessing nessesary for each of the predictors                                                                                      |         |
-| **`prepare_rs_gradients.ipynb`**                   | Computation of resting-state functional connectivity components                                                                              |         |
-| `prepare_rs_ica.ipynb`                             | Similiar process for the ICA components                                                                                                      |         |
-| `prepare_distances.ipynb`                          | Computation of distances (vertex-to-parcels/landmarks) and PCA of the full vertex-to-vertex distance matrix                                  |         |
-| `prepare_structural_eigenmodes.ipynb`              | Computation of the structural eigenmodes of the individual left-hemisphere cortical surfaces                                                 |         |
-| `prepare_blueprints.ipynb`                         | This notebook loads individual blueprints (prev computed by FSL XTract) and concatenates them into a single file.                            |         |
-| **`prepare_task_maps_(pred target).ipynb`**        | Concatenates task contrasts for each subject into a single file                                                                              |         |
-| **Model fitting and analysis**                     |                                                                                                                                              |         |
-| **`linear_models.ipynb`**                          | The full model fitting pipeline for all modalities, along with plotting of the main results                                                  |         |
-| **`linear_models_pca_component_annotation.ipynb`** | Annotation of the main RS-PCA components underlying the best performing model through correlation with known maps of brain organization      |         |
-| `linear_models_feature_contributions_(pca).ipynb`  | Alternative ways of assessing the importance of each RS-PCA component as feature in the linear model.                                        |         |
-| tbd: figure plotting script                        |                                                                                                                                              |         |
-| **Validation**                                     |                                                                                                                                              |         |
-| `replicate_on_right_hemisphere.ipynb`              | Replication of the full model fitting pipeline based on data from the right hemisphere in the same subject (includes preparation & model fitting)      |         |
-| `cneuromod_validation.ipynb`                       | Test of the generalizeability of the previously fitted linear model (based on HCP subjects) to a new dataset (CNeuroMod) + Replication of the full model fitting pipeline based on CNeuroMod data of 3 subjects  (includes download, task-contrast computation, preparation & model fitting) |         |
-| **Other**                                          | (not part of the manuscript)                                                                                                                 |         |
-| `linear_models_yresid.ipynb`                       |                                                                                                                                              |         |
-| `ann_results_summary.ipynb`                        | summarizes the NN results                                                                                                                    |         |
-| `BrainSurfCNN.ipynb`                               |                                                                                                                                              |         |
+The code is structured into notebooks that span the different analysis stages:
 
+| File            | Description                                                                                                                                  |
+| ------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| <br>**Model fitting and analysis**                     |                                                                                                                                              |
+| `linear_models.ipynb`                              | The full model fitting pipeline for all modalities, along with plotting of the main results                                                  |
+| `linear_models_pca_component_annotation.ipynb`     | Annotation of the main RS-PCA components underlying the best performing model through correlation with known maps of brain organization. Contains: ***SupplTable 1***     |
+| `linear_models_feature_contributions_(pca).ipynb`  | Alternative ways of assessing the importance of each RS-PCA component as feature in the linear model.                                        |       
+| **Validation**                                     |                                                                                                                                              |     
+| `replicate_on_right_hemisphere.ipynb`              | Replication of the full model fitting pipeline based on data from the right hemisphere in the same subject (includes preparation & model fitting).  Contains: ***SupplFig 5***   | 
+| ` cneuromod_validation.c.ipynb`                    | Test of the generalizeability of the previously fitted linear model (based on HCP subjects) to a new dataset (CNeuroMod) + Replication of the full model fitting pipeline based on CNeuroMod data of 3 subjects  (includes download, task-contrast computation, preparation & model fitting).  Contains: ***SupplFig 6, 7*** |
+| **Plotting**                                       |                                                                                                                 |
+| `plot_overall_results.ipynb`                       | For plotting of the follwing figures: ***Figure 2,3e; SupplFig 1,2; SupplTable 1***                                                         | 
+| `plot_per-parcel_model_results.ipynb`              | For plotting of the follwing figures: ***Figure 4; SupplFig 3***                                                                            |  
+| `plot_rspca_indiv_predictions.ipynb`               | For plotting of the follwing figures: ***Figure 3c,d***                                                                                      | 
+| `plot_rspca_component_weights_v2.ipynb`            | For plotting of the follwing figures: ***Figure 3b,5; SupplFig 4***                                                                          |
+
+<br>
+
+Thereby it is drawing in common functions that are defined in scripts located in the `lib/` folder  :
+
+| File            | Description                                                                                                                                  |
+| ------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `lib/data_loading.py`                              | Some helper functions to load data, e.g. `load_xy_data`, `gather_modalities`                                                                                                   |
+| `lib/linear_models.py`                             | Helper functions for model fitting and prediction, e.g. `predict_y_from_x, score`                                                            |
+| `lib/plotting.py`                                  | Some custom plotting functions (as surfplot cannot be used on our current cluster as no x-server is available), e.g. `plot_bars`, `plot_29k` |
+| `lib/stats.py`                                     | Functions to compute some statstics & scores, e.g. `compute_all_scores`, `comp_dice`, or `comp_corr`                                         |
+
+<br>
+Furthermore we provide the preprocessing scripts that transforms the data into the inputs required for the scripts above: 
+<details> 
+  <summary> <b>Download and preprocessing scripts</b> </summary>
+
+| File            | Description                                                                                                                                  |
+| ------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| <br>**Preparation**                                    | i.e. preprocessing nessesary for each of the predictors                                                                                      |
+| `download_hcp_data.ipynb`                          | download resting brain surfaces, state runs, task maps and (freesurfer-derived) structural maps                                              | 
+| `hcp_task_retest_baseline.ipynb`                   | Notebook to compute the test-retest baselines (accuracy, discriminability, vertex-wise-scores ...)                                           |
+| `prepare_rs_gradients.ipynb`                       | Computation of resting-state functional connectivity components                                                                              |
+| `prepare_rs_ica.ipynb`                             | Similiar process for the ICA components                                                                                                      |
+| `prepare_distances.ipynb`                          | Computation of distances (vertex-to-parcels/landmarks) and PCA of the full vertex-to-vertex distance matrix                                  |
+| `prepare_structural_eigenmodes.ipynb`              | Computation of the structural eigenmodes of the individual left-hemisphere cortical surfaces                                                 |
+| `prepare_blueprints.ipynb`                         | This notebook loads individual blueprints (prev computed by FSL XTract) and concatenates them into a single file.                            |
+| `prepare_task_maps_(pred target).ipynb`  <br>          | Concatenates task contrasts for each subject into a single file                                                                              |
+
+</details>
 
 <br>
 
@@ -44,11 +61,14 @@ Some scripts contain commands to connectome workbench as well.
 ### Resources and results
 
 + `results/retest_hcp45.task_maps.npy` - task maps for the 46 retest subjects (dict, keys: task_names, values: list of tuples (test_contrast, retest_contrast), each contrast of shape (29696))
-
 + `results/retest_hcp45.test.mean_task_maps.npy` - array of shape (task, vertcies)
-
 + `results/scores/retest_hcp45.retest_scores.npy` - as dict
 
-# Preprint / Cite ...
+TBD: download to openneuro/figshare of big files. 
 
-The Courtois project on neural modelling was made possible by a generous donation from the Courtois foundation, administered by the Fondation Institut Gériatrie Montréal at CIUSSS du Centre-Sud-de-l’île-de-Montréal and the University of Montreal. The Courtois NeuroMod team is based at “Centre de Recherche de l’Institut Universitaire de Gériatrie de Montréal”, with several other institutions involved. See the CNeuroMod documentation for an up-to-date list of contributors (https://docs.cneuromod.ca).
+# Preprint & Citation
+
+To cite this work, please use:
+```
+Scholz, R., Benn, R. A. B., Shevchenko, V., Klatzmann, U., Wei, W., Alberti, F., ... & Margulies, D. S. (2024). Individual brain activity patterns during task are predicted by distinct resting-state networks that may reflect local neurobiological features. bioRxiv, 2024-11.
+```
