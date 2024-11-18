@@ -1,6 +1,6 @@
-# Contents
+# Individual brain activity patterns during task are predicted by distinct resting-state networks that may reflect local neurobiological features
 
-This repository contains the code for the study **"Individual brain activity patterns during task are predicted by distinct resting-state networks that may reflect local neurobiological features"** \[[biorxiv](https://www.biorxiv.org/content/10.1101/2024.11.13.621472v1.abstract)\]
+This repository contains the code for the study "Individual brain activity patterns during task are predicted by distinct resting-state networks that may reflect local neurobiological features" \[[biorxiv](https://www.biorxiv.org/content/10.1101/2024.11.13.621472v1.abstract)\]
 
 The code is structured into notebooks that span the different analysis stages:
 
@@ -31,6 +31,9 @@ Thereby it is drawing in common functions that are defined in scripts located in
 | `lib/stats.py`                                     | Functions to compute some statstics & scores, e.g. `compute_all_scores`, `comp_dice`, or `comp_corr`                                         |
 
 <br>
+
+# Preprocessing
+
 Furthermore we provide the preprocessing scripts that transforms the data into the inputs required for the scripts above: 
 <details> 
   <summary> <b>Download and preprocessing scripts</b> </summary>
@@ -51,19 +54,63 @@ Furthermore we provide the preprocessing scripts that transforms the data into t
 
 <br>
 
-### Dependencies 
+# Resources and results
+
+TBD: download to openneuro/figshare of big files. 
+<details> 
+  <summary> <b>Files to upload</b> </summary>
+
+```txt
+data/all_cortical_reference_maps_v2.fslr32k.l29.npy
+
+results/scores/rs_pca.lin_weights.200.spatial_zscore.yfull.npy
+data/group_conmat_pca.200c.pkl
+
+Results (i.e. scores & information) + in extended version with individual task contrast predictions
+results/scores/linear_regression_scores_and_info_v3.yfull.aa.npy
+results/scores/linear_regression_scores_and_info_v3.yfull.aa.extended.npy
+
+Results (i.e. scores & information) + in extended version with individual task contrast predictions
+results/scores/within_parcel_models.lausanne.51test_subjs.47tasks.all_modalities.from_zscored.yfull.npy
+
+Data saved for external plotting (Predictor and result subsets):
+data/xdata_microstruc.51subj.test.yfull.npy
+data/xdata_rspca.51subj.200comps.test.yfull.npy
+results/scores/linear_regression_scores_and_info_v3.yfull.aa.extended.small.npy
+
+results/retest_hcp40.test.mean_task_maps47.from_zscored.npy
+results/retest_hcp40.task_maps47.zscored.npy
+
+Full Task Retest baseline
+results/scores/retest_hcp.40subjs.47tasks.retest_scores.from_zscored.npy
+
+Full Task baseline when always predicting group averages
+results/scores/retest_hcp.40subjs.47tasks.group_mean_scores.from_zscored.npy
+
+Full Task Retest vw-accuracy baseline
+results/scores/retest_hcp.40subjs.47tasks.vertexw_acc_across_subjs.from_zscored.npygroup_mean_scores.from_zscored.npy
+```
+
+</details> 
+
+# Dependencies 
 
 These scripts make wide usage of the following python libraries: `nibabel`, `nilearn`, `sklearn`, `surfplot`, `brainspace`, and `hcp_utils`. 
 
 Some scripts contain commands to connectome workbench as well.
 
-### Resources and results
-
-TBD: download to openneuro/figshare of big files. 
 
 # Preprint & Citation
 
 To cite this work, please use:
-```
-Scholz, R., Benn, R. A. B., Shevchenko, V., Klatzmann, U., Wei, W., Alberti, F., ... & Margulies, D. S. (2024). Individual brain activity patterns during task are predicted by distinct resting-state networks that may reflect local neurobiological features. bioRxiv, 2024-11.
+
+ ```bibtex
+@article{scholz2024individual,
+  title={Individual brain activity patterns during task are predicted by distinct resting-state networks that may reflect local neurobiological features},
+  author={Scholz, Robert and Benn, R Austin Bruce and Shevchenko, Victoria and Klatzmann, Ulysse and Wei, Wei and Alberti, Francesco and Chiou, Rocco and Zhang, Xi-Han and Leech, Robert and Smallwood, Jonathan and others},
+  journal={bioRxiv},
+  pages={2024--11},
+  year={2024},
+  publisher={Cold Spring Harbor Laboratory}
+}
 ```
