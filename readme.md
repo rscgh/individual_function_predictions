@@ -1,4 +1,4 @@
-# Individual brain activity patterns during task are predicted by distinct resting-state networks that may reflect local neurobiological features
+# Individual function predictions
 
 This repository contains the code for the study "Individual brain activity patterns during task are predicted by distinct resting-state networks that may reflect local neurobiological features" \[[biorxiv](https://www.biorxiv.org/content/10.1101/2024.11.13.621472v1.abstract)\]
 
