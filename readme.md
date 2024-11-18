@@ -9,9 +9,8 @@ This repository contains the code for the study **"Individual brain activity pat
 
 The code is structured into notebooks that span the different analysis stages:
 
-| File            | Description                                                                                                                                  |
+| <div align="left"> Model fitting and analysis </div>          | Description                                                                                                                                  |
 | ------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| <br>**Model fitting and analysis**                     |                                                                                                                                              |
 | [linear_models.c.ipynb](linear_models.c.ipynb)                             | The full model fitting pipeline for all modalities, along with plotting of the main results                                                  |
 | [linear_models_pca_ component_annotation.ipynb](linear_models_pca_component_annotation.ipynb)     | Annotation of the main RS-PCA components underlying the best performing model through correlation with known maps of brain organization. Contains: ***SupplTable 1***     |
 | [linear_models_feature_ contributions_(pca).ipynb](linear_models_feature_contributions_(pca).ipynb)  | Alternative ways of assessing the importance of each RS-PCA component as feature in the linear model.                                        |       
@@ -26,7 +25,7 @@ The code is structured into notebooks that span the different analysis stages:
 
 <br>
 
-Thereby it is drawing in common functions that are defined in scripts located in the `lib/` folder  :
+Thereby it is drawing in common functions that are defined in scripts located in the [`lib/`](lib) folder  :
 
 | File            | Description                                                                                                                                  |
 | ------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
