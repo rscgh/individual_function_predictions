@@ -1,22 +1,38 @@
 # Individual function predictions
 
+
 [<img src="https://img.shields.io/badge/biorxiv-preprint-blue.svg?logo=LOGO">](https://www.biorxiv.org/content/10.1101/2024.11.13.621472v1.abstract)
 [<img src="https://img.shields.io/badge/twitter-thread-lightblue.svg?logo=LOGO">](https://www.biorxiv.org/content/10.1101/2024.11.13.621472v1.abstract)
+
 
 This repository contains the code for the study **"Individual brain activity patterns during task are predicted by distinct resting-state networks that may reflect local neurobiological features"** \[[biorxiv](https://www.biorxiv.org/content/10.1101/2024.11.13.621472v1.abstract)\]
 
 <img src="data/F3.large1.jpg" width="800">
 
+This manuscript describes a pipeline that allows for the prediction of individual brain acitvity patterns based on a range of feature modalities, and the analysis of which features are predictive of which function.
+
+We use for example *functional connectivity* (both PCA/gradients and ICA components), *geometric measures* such as distances on the brain surface to sensory areas, *structural connecitvity* (i.e. DWI measures of fibre tracts), *cortical microstructure & morphology* (e.g. local cortical thickness). The relevant preprocessing is described separately [for each modality](#preprocessing).
+
+You can **get started** by having a look at regression ([`linear_models.c.ipynb`](linear_models.c.ipynb)), and plotting notebooks ([`plot_overall_results.ipynb`](plot_overall_results.ipynb)).  An example of the full pipeline (from data download, to regression and scoring) can be found in [`cneuromod_validation.c.ipynb`](cneuromod_validation.c.ipynb). 
+
+The resolution of output images in the notebooks was reduced to avoid large filesizes. 
+
+For these predictions we use data from both the [Human Connectome Project](https://www.humanconnectome.org/study/hcp-young-adult/document/1200-subjects-data-release), and the [Curtois Project on Neural Modeling](https://docs.cneuromod.ca/en/latest/DATASETS.html#hcptrt).
+
+If there seems to be something missing or you'd like to contribute, please open an issue.
+
+### File descriptions
+
 The code is structured into notebooks that span the different analysis stages:
 
-| <div align="left"> Model fitting and analysis </div>          | Description                                                                                                                                  |
+| <div align="left"> Model fitting and analysis </div>          |  <div align="left"> Description    </div>                                                                                                                 |
 | ------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
 | [linear_models.c.ipynb](linear_models.c.ipynb)                             | The full model fitting pipeline for all modalities, along with plotting of the main results                                                  |
-| [linear_models_pca_ component_annotation.ipynb](linear_models_pca_component_annotation.ipynb)     | Annotation of the main RS-PCA components underlying the best performing model through correlation with known maps of brain organization. Contains: ***SupplTable 1***     |
+| [linear_models_pca_ component_annotation.ipynb](linear_models_pca_component_annotation.ipynb)     | Annotation of the main RS-PCA components underlying the best performing model through correlation with known maps of brain organization. Creates: ***SupplTable 1***     |
 | [linear_models_feature_ contributions_(pca).ipynb](linear_models_feature_contributions_(pca).ipynb)  | Alternative ways of assessing the importance of each RS-PCA component as feature in the linear model.                                        |       
 | **Validation**                                     |                                                                                                                                              |     
-| [replicate_on_right_hemisphere.ipynb](replicate_on_right_hemisphere.ipynb)            | Replication of the full model fitting pipeline based on data from the right hemisphere in the same subject (includes preparation & model fitting).  Contains: ***SupplFig 5***   | 
-| ` cneuromod_validation.c.ipynb`                    | Test of the generalizeability of the previously fitted linear model (based on HCP subjects) to a new dataset (CNeuroMod) + Replication of the full model fitting pipeline based on CNeuroMod data of 3 subjects  (includes download, task-contrast computation, preparation & model fitting).  Contains: ***SupplFig 6, 7*** |
+| [replicate_on_right_hemisphere.ipynb](replicate_on_right_hemisphere.ipynb)            | Replication of the full model fitting pipeline based on data from the right hemisphere in the same subject (includes preparation & model fitting).  Creates: ***SupplFig 5***   | 
+| `cneuromod_validation.c.ipynb`                    | Test of the generalizeability of the previously fitted linear model (based on HCP subjects) to a new dataset (CNeuroMod) + Replication of the full model fitting pipeline based on CNeuroMod data of 3 subjects  (includes download, task-contrast computation, preparation & model fitting).  Creates: ***SupplFig 6, 7*** |
 | **Plotting**                                       |                                                                                                                 |
 | `plot_overall_results.ipynb`                       | For plotting of the follwing figures: ***Figure 2,3e; SupplFig 1,2; SupplTable 1***                                                         | 
 | `plot_per-parcel_model_results.ipynb`              | For plotting of the follwing figures: ***Figure 4; SupplFig 3***                                                                            |  
@@ -27,13 +43,10 @@ The code is structured into notebooks that span the different analysis stages:
 
 Thereby it is drawing in common functions that are defined in scripts located in the [`lib/`](lib) folder  :
 
-| File            | Description                                                                                                                                  |
-| ------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| `lib/data_loading.py`                              | Some helper functions to load data, e.g. `load_xy_data`, `gather_modalities`                                                                                                   |
-| `lib/linear_models.py`                             | Helper functions for model fitting and prediction, e.g. `predict_y_from_x, score`                                                            |
-| `lib/plotting.py`                                  | Some custom plotting functions (as surfplot cannot be used on our current cluster as no x-server is available), e.g. `plot_bars`, `plot_29k` |
-| `lib/stats.py`                                     | Functions to compute some statstics & scores, e.g. `compute_all_scores`, `comp_dice`, or `comp_corr`                                         |
-
+* `lib/data_loading.py` - Some helper functions to load data, e.g. `load_xy_data`, `gather_modalities`
+* `lib/linear_models.py` - Helper functions for model fitting and prediction, e.g. `predict_y_from_x, score`
+* `lib/plotting.py` - Some custom plotting functions (as surfplot cannot be used on our current cluster as no x-server is available), e.g. `plot_bars`, `plot_29k`
+* `lib/stats.py` - Functions to compute some statstics & scores, e.g. `compute_all_scores`, `comp_dice`, or `comp_corr`
 <br>
 
 # Preprocessing
@@ -102,7 +115,7 @@ results/scores/retest_hcp.40subjs.47tasks.vertexw_acc_across_subjs.from_zscored.
 These scripts make wide usage of the following python libraries: 
 `nibabel`, `nilearn`, `sklearn`, `surfplot`, `brainspace`, and `hcp_utils`. 
 
-Some scripts contain commands to connectome workbench as well.
+Some scripts contain references to commands for the transformation of surface brain data from the [connectome workbench toolbox](https://www.humanconnectome.org/software/connectome-workbench).
 
 
 # Preprint & Citation
