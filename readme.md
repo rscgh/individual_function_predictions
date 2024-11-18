@@ -55,9 +55,8 @@ Furthermore we provide the preprocessing scripts that transforms the data into t
 <details> 
   <summary> <b>Download and preprocessing scripts</b> </summary>
 
-| File            | Description                                                                                                                                  |
+| Preprocessing Script            | Description                                                                                                                                  |
 | ------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| <br>**Preparation**                                    | i.e. preprocessing nessesary for each of the predictors                                                                                      |
 | `download_hcp_data.ipynb`                          | download resting brain surfaces, state runs, task maps and (freesurfer-derived) structural maps                                              | 
 | `hcp_task_retest_baseline.ipynb`                   | Notebook to compute the test-retest baselines (accuracy, discriminability, vertex-wise-scores ...)                                           |
 | `prepare_rs_gradients.ipynb`                       | Computation of resting-state functional connectivity components                                                                              |
