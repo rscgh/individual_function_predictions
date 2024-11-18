@@ -57,12 +57,7 @@ These scripts make wide usage of the following python libraries: `nibabel`, `nil
 
 Some scripts contain commands to connectome workbench as well.
 
-
 ### Resources and results
-
-+ `results/retest_hcp45.task_maps.npy` - task maps for the 46 retest subjects (dict, keys: task_names, values: list of tuples (test_contrast, retest_contrast), each contrast of shape (29696))
-+ `results/retest_hcp45.test.mean_task_maps.npy` - array of shape (task, vertcies)
-+ `results/scores/retest_hcp45.retest_scores.npy` - as dict
 
 TBD: download to openneuro/figshare of big files. 
 
