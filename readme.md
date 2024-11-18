@@ -1,6 +1,11 @@
 # Individual function predictions
 
+[<img src="https://img.shields.io/badge/biorxiv-preprint-blue.svg?logo=LOGO">](https://www.biorxiv.org/content/10.1101/2024.11.13.621472v1.abstract)
+[<img src="https://img.shields.io/badge/twitter-thread-lightblue.svg?logo=LOGO">](https://www.biorxiv.org/content/10.1101/2024.11.13.621472v1.abstract)
+
 This repository contains the code for the study "Individual brain activity patterns during task are predicted by distinct resting-state networks that may reflect local neurobiological features" \[[biorxiv](https://www.biorxiv.org/content/10.1101/2024.11.13.621472v1.abstract)\]
+
+
 
 The code is structured into notebooks that span the different analysis stages:
 
@@ -95,7 +100,8 @@ results/scores/retest_hcp.40subjs.47tasks.vertexw_acc_across_subjs.from_zscored.
 
 # Dependencies 
 
-These scripts make wide usage of the following python libraries: `nibabel`, `nilearn`, `sklearn`, `surfplot`, `brainspace`, and `hcp_utils`. 
+These scripts make wide usage of the following python libraries: 
+`nibabel`, `nilearn`, `sklearn`, `surfplot`, `brainspace`, and `hcp_utils`. 
 
 Some scripts contain commands to connectome workbench as well.
 
