@@ -32,21 +32,21 @@ The code is structured into notebooks that span the different analysis stages:
 | [linear_models_feature_ contributions_(pca).ipynb](linear_models_feature_contributions_(pca).ipynb)  | Alternative ways of assessing the importance of each RS-PCA component as feature in the linear model.                                        |       
 | **Validation**                                     |                                                                                                                                              |     
 | [replicate_on_right_hemisphere.ipynb](replicate_on_right_hemisphere.ipynb)            | Replication of the full model fitting pipeline based on data from the right hemisphere in the same subject (includes preparation & model fitting).  Creates: ***SupplFig 5***   | 
-| `cneuromod_validation.c.ipynb`                    | Test of the generalizeability of the previously fitted linear model (based on HCP subjects) to a new dataset (CNeuroMod) + Replication of the full model fitting pipeline based on CNeuroMod data of 3 subjects  (includes download, task-contrast computation, preparation & model fitting).  Creates: ***SupplFig 6, 7*** |
+| [cneuromod_validation.c.ipynb](cneuromod_validation.c.ipynb)                    | Test of the generalizeability of the previously fitted linear model (based on HCP subjects) to a new dataset (CNeuroMod) + Replication of the full model fitting pipeline based on CNeuroMod data of 3 subjects  (includes download, task-contrast computation, preparation & model fitting).  Creates: ***SupplFig 6, 7*** |
 | **Plotting**                                       |                                                                                                                 |
-| `plot_overall_results.ipynb`                       | For plotting of the follwing figures: ***Figure 2,3e; SupplFig 1,2; SupplTable 1***                                                         | 
-| `plot_per-parcel_model_results.ipynb`              | For plotting of the follwing figures: ***Figure 4; SupplFig 3***                                                                            |  
-| `plot_rspca_indiv_predictions.ipynb`               | For plotting of the follwing figures: ***Figure 3c,d***                                                                                      | 
-| `plot_rspca_component_weights_v2.ipynb`            | For plotting of the follwing figures: ***Figure 3b,5; SupplFig 4***                                                                          |
+| [plot_overall_results.ipynb](plot_overall_results.ipynb)                       | For plotting of the follwing figures: ***Figure 2,3e; SupplFig 1,2; SupplTable 1***                                                         | 
+| [plot_per-parcel_model_results.ipynb](plot_per-parcel_model_results.ipynb)              | For plotting of the follwing figures: ***Figure 4; SupplFig 3***                                                                            |  
+| [plot_rspca_indiv_predictions.ipynb](plot_rspca_indiv_predictions.ipynb)              | For plotting of the follwing figures: ***Figure 3c,d***                                                                                      | 
+| [plot_rspca_component_weights_v2.ipynb](plot_rspca_component_weights_v2.ipynb)            | For plotting of the follwing figures: ***Figure 3b,5; SupplFig 4***                                                                          |
 
 <br>
 
 Thereby it is drawing in common functions that are defined in scripts located in the [`lib/`](lib) folder  :
 
-* `lib/data_loading.py` - Some helper functions to load data, e.g. `load_xy_data`, `gather_modalities`
-* `lib/linear_models.py` - Helper functions for model fitting and prediction, e.g. `predict_y_from_x, score`
-* `lib/plotting.py` - Some custom plotting functions (as surfplot cannot be used on our current cluster as no x-server is available), e.g. `plot_bars`, `plot_29k`
-* `lib/stats.py` - Functions to compute some statstics & scores, e.g. `compute_all_scores`, `comp_dice`, or `comp_corr`
+* [`lib/data_loading.py`](lib/data_loading.py) - Some helper functions to load data, e.g. [`load_xy_data`](lib/data_loading.py#L21), [`gather_modalities`](lib/data_loading.py#L72)
+* [`lib/linear_models.py`](lib/linear_models.py) - Helper functions for model fitting and prediction, e.g. [`predict_y_from_x`](lib/linear_models.py#L15), [`score`](lib/linear_models.py#L55)
+* [`lib/plotting.py`](lib/plotting.py) - Some custom plotting functions (as surfplot cannot be used on our current cluster as no x-server is available), e.g. [`plot_bars`](lib/plotting.py#L234), [`plot_29k`](lib/plotting.py#L99)
+* [`lib/stats.py`](lib/stats.py) - Functions to compute some statstics & scores, e.g. `compute_all_scores`, `comp_dice`, or `comp_corr`
 <br>
 
 # Preprocessing
