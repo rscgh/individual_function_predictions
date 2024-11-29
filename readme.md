@@ -72,7 +72,7 @@ Furthermore we provide the preprocessing scripts that transforms the data into t
 
 # Resources and results
 
-TBD: download to openneuro/figshare of big files. 
+TBD: upload to openneuro/figshare of big files. 
 <details> 
   <summary> <b>Files to upload</b> </summary>
 
